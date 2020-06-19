@@ -47,8 +47,13 @@ jobs:
     - name: "Galaxy Docker"
       python: "3.7"
       env: SUITE=docker-galaxy TOX_ENV=py37
+      addons:
+        apt:
+          sources:
+            - deadsnakes
+          packages:
+            - python3.7-dev
       script:
-        - ls /home/travis/virtualenv/python3.7.1/bin
         - bash ci_test_docker_galaxy.sh
 
     - name: "Planemo Machine"
