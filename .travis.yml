@@ -1,12 +1,12 @@
 ---
 language: python
-python: 2.7
+python: 3.7
 dist: xenial
 sudo: required
 
 env:
   global:
-    - TOX_ENV=py27
+    - TOX_ENV=py37
   matrix:
     - SUITE=galaxykickstart
     - SUITE=docker-galaxy
