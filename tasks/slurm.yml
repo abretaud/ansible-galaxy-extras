@@ -42,7 +42,7 @@
   when: galaxy_extras_install_packages and ansible_distribution_version == "18.04"
 
 - name: Install SLURM system packages
-  apt: pkg=['slurm-wlm-torque'] state={{ galaxy_extras_apt_package_state }}
+  apt: pkg=slurm-wlm-torque state={{ galaxy_extras_apt_package_state }}
   when: galaxy_extras_install_packages
 
 - name: Create Munge Key

@@ -42,9 +42,6 @@ jobs:
       python: "3.7"
       env: SUITE=galaxykickstart
       script:
-        - sudo apt-get install slurm-wlm-torque
-        - sudo apt-get update -qq
-        - sudo apt-get install slurm-wlm-torque
         - bash ci_test_galaxykickstart.sh
 
     - name: "Galaxy Docker"
