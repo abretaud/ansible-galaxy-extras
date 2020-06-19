@@ -11,6 +11,8 @@ export BIOBLEND_GALAXY_API_KEY=admin
 export BIOBLEND_GALAXY_URL=http://127.0.0.1:80
 export BIOBLEND_TEST_JOB_TIMEOUT=240
 
+sudo -E su $GALAXY_TRAVIS_USER -c 'env; which python;'
+
 sudo -E su $GALAXY_TRAVIS_USER -c 'pip install --ignore-installed --user https://github.com/galaxyproject/bioblend/archive/master.zip pytest'
 
 sudo /etc/init.d/postgresql stop
