@@ -57,8 +57,8 @@ jobs:
         - bash ci_test_docker_galaxy.sh
 
     # 2020.06.19: Failing because the Docker image there fails to build (python 2.7 can't install setuptools)
-    - name: "Planemo Machine"
-      python: "2.7"
-      env: SUITE=planemo-machine
-      script:
-        - bash ci_test_planemo_machine.sh
+    #- name: "Planemo Machine"
+    #  python: "2.7"
+    #  env: SUITE=planemo-machine
+    #  script:
+    #    - bash ci_test_planemo_machine.sh
