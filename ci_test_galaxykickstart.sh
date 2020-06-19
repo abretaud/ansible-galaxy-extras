@@ -11,9 +11,9 @@ export BIOBLEND_GALAXY_API_KEY=admin
 export BIOBLEND_GALAXY_URL=http://127.0.0.1:80
 export BIOBLEND_TEST_JOB_TIMEOUT=240
 
-sudo -E su $GALAXY_TRAVIS_USER -c 'env; which python;'
+sudo -E su $GALAXY_TRAVIS_USER -c 'source ~/virtualenv/python3.7/bin/activate; env; which python;'
 
-sudo -E su $GALAXY_TRAVIS_USER -c 'pip install --ignore-installed --user https://github.com/galaxyproject/bioblend/archive/master.zip pytest'
+sudo -E su $GALAXY_TRAVIS_USER -c 'source ~/virtualenv/python3.7/bin/activate; pip install --ignore-installed --user https://github.com/galaxyproject/bioblend/archive/master.zip pytest'
 
 sudo /etc/init.d/postgresql stop
 sudo apt-get -y --purge remove postgresql libpq-dev libpq5 postgresql-client-common postgresql-common
@@ -38,7 +38,7 @@ date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://127.0.0.1:21 --user
 # install bioblend testing, GKS way.
 pip --version
 sudo rm -f /etc/boto.cfg
-sudo -E su $GALAXY_TRAVIS_USER -c 'pip install --ignore-installed --user https://github.com/galaxyproject/bioblend/archive/master.zip pytest'
+sudo -E su $GALAXY_TRAVIS_USER -c 'source ~/virtualenv/python3.7/bin/activate; pip install --ignore-installed --user https://github.com/galaxyproject/bioblend/archive/master.zip pytest'
 
 
 sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
