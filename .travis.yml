@@ -48,6 +48,7 @@ jobs:
       python: "3.7"
       env: SUITE=docker-galaxy TOX_ENV=py37
       script:
+        - ls /home/travis/virtualenv/python3.7.1/bin
         - bash ci_test_docker_galaxy.sh
 
     - name: "Planemo Machine"
