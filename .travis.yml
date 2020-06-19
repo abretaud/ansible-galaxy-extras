@@ -1,17 +1,12 @@
 ---
 language: python
-python: 3.7
+python: 2.7
 dist: xenial
-sudo: required
+os: linux
 
 env:
   global:
     - TOX_ENV=py37
-  matrix:
-    - SUITE=galaxykickstart
-    - SUITE=docker-galaxy
-    - SUITE=planemo-machine
-    - SUITE=syntax
 
 services:
   - docker
@@ -36,8 +31,27 @@ install:
   # Add ansible.cfg to pick up roles path.
   - printf '[defaults]\nroles_path = ../' > ansible.cfg
 
-script:
-  - if [ "$SUITE" == "syntax" ]; then ansible-playbook -i "localhost," tests/syntax.yml --syntax-check; fi
-  - if [ "$SUITE" == "docker-galaxy" ]; then bash ci_test_docker_galaxy.sh; fi
-  - if [ "$SUITE" == "galaxykickstart" ]; then bash ci_test_galaxykickstart.sh; fi
-  - if [ "$SUITE" == "planemo-machine" ]; then bash ci_test_planemo_machine.sh; fi
+jobs:
+  include:
+    - name: "Syntax"
+      env: SUITE=syntax
+      script:
+        - ansible-playbook -i "localhost," tests/syntax.yml --syntax-check
+
+    - name: "Galaxy Kickstart"
+      python: "3.7"
+      env: SUITE=galaxykickstart
+      script:
+        - bash ci_test_galaxykickstart.sh
+
+    - name: "Galaxy Docker"
+      python: "3.7"
+      env: SUITE=docker-galaxy TOX_ENV=py37
+      script:
+        - bash ci_test_docker_galaxy.sh
+
+    - name: "Planemo Machine"
+      python: "2.7"
+      env: SUITE=planemo-machine
+      script:
+        - bash ci_test_planemo_machine.sh
