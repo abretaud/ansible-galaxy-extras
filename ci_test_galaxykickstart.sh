@@ -13,7 +13,7 @@ export BIOBLEND_TEST_JOB_TIMEOUT=240
 
 chmod a+rx /home/travis/
 sudo -E su $GALAXY_TRAVIS_USER -c 'source /home/travis/virtualenv/python3.7/bin/activate; env; which python;'
-sudo -E su $GALAXY_TRAVIS_USER -c 'source /home/travis/virtualenv/python3.7/bin/activate; pip install --ignore-installed --user https://github.com/galaxyproject/bioblend/archive/master.zip pytest'
+sudo -E su $GALAXY_TRAVIS_USER -c 'source /home/travis/virtualenv/python3.7/bin/activate; pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/master.zip pytest'
 
 sudo /etc/init.d/postgresql stop
 sudo apt-get -y --purge remove postgresql libpq-dev libpq5 postgresql-client-common postgresql-common
