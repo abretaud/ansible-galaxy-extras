@@ -1,7 +1,7 @@
 ---
 language: python
 python: 2.7
-dist: xenial
+dist: bionic
 os: linux
 
 env:
@@ -56,6 +56,7 @@ jobs:
       script:
         - bash ci_test_docker_galaxy.sh
 
+    # 2020.06.19: Failing because the Docker image there fails to build (python 2.7 can't install setuptools)
     - name: "Planemo Machine"
       python: "2.7"
       env: SUITE=planemo-machine
