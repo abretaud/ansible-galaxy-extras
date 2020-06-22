@@ -47,5 +47,5 @@ bioblend-galaxy-tests -v -k 'not download_dataset and \
               not test_update_dataset_tags and \
               not test_upload_file_contents_with_tags and \
               not test_create_local_user and \
-              not test_show_workflow_versions' /home/travis/virtualenv/lib/python3.7/site-packages/bioblend/_tests/TestGalaxy*.py"
+              not test_show_workflow_versions' /home/travis/virtualenv/python3.7/lib/python3.7/site-packages/bioblend/_tests/TestGalaxy*.py"
 cd $TRAVIS_BUILD_DIR
